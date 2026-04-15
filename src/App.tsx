@@ -7,16 +7,15 @@ import {
   Menu,
   X,
   Star,
-  TrendingUp,
   Check,
   Send,
   Zap,
-  Phone,
   Globe,
   ExternalLink,
   Clock,
   Mic,
 } from 'lucide-react';
+import { Magnetic, Reveal, CountUp, TiltCard } from './animations';
 
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +40,7 @@ export default function App() {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
   };
 
   const staggerContainer = {
@@ -76,7 +75,7 @@ export default function App() {
       name: 'Wayne Edwards Plumbing & Gas',
       trade: 'Plumber & Gas Engineer',
       location: 'Llanelli, South Wales',
-      package: 'Dominate',
+      package: 'Pro',
       url: 'https://wayne-edwards.netlify.app/',
       description: 'Multi-page local SEO site for a Gas Safe registered engineer with 20+ years experience. Competitor research, service pages, schema markup.',
       preview: '/wayne-edwards-preview.png',
@@ -85,16 +84,16 @@ export default function App() {
       name: 'Craig Edwards Plumbing',
       trade: 'Plumber',
       location: 'Llanelli, Wales',
-      package: 'Dominate',
+      package: 'Pro',
       url: 'https://craig-edwards.netlify.app/',
-      description: 'Multi-page Dominate build targeting boiler installations, repairs, and central heating across Llanelli.',
+      description: 'Multi-page Pro build targeting boiler installations, repairs, and central heating across Llanelli.',
       preview: '/craig-edwards-preview.png',
     },
     {
       name: 'Corcoran Plumbing & Heating',
       trade: 'Plumber & Gas Engineer',
       location: 'Llanelli, Wales',
-      package: 'Dominate',
+      package: 'Pro',
       url: 'https://corcoran-plumbing.netlify.app/',
       description: 'Steel and orange brand identity for a Gas Safe registered heating specialist. Boiler installations, servicing, and LPG work across Carmarthenshire.',
       preview: '/corcoran-preview.png',
@@ -147,72 +146,88 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero */}
-      <section className="relative pt-28 pb-10 lg:pt-32 lg:pb-16 overflow-hidden min-h-screen flex flex-col justify-center">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:18px_18px] opacity-40" />
-        <div className="absolute top-0 right-0 -z-10 w-[700px] h-[700px] bg-brand-orange/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
+      <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:22px_22px] opacity-40" />
+        <div className="absolute top-0 right-0 -z-10 w-[900px] h-[900px] bg-brand-orange/[0.06] rounded-full blur-3xl translate-x-1/4 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 -z-10 w-[700px] h-[700px] bg-brand-dark/[0.04] rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="text-center">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-brand-dark font-semibold text-sm mb-6 border border-gray-200 shadow-sm">
+              <Zap className="w-4 h-4 text-brand-orange" />
+              For UK tradies
+            </motion.div>
 
-            <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange font-semibold text-sm mb-6 border border-brand-orange/20">
-                <Zap className="w-4 h-4" />
-                For Plumbers, Roofers, Electricians & HVAC
-              </motion.div>
+            <motion.h1
+              variants={fadeInUp}
+              className="text-[2.5rem] sm:text-6xl lg:text-8xl font-bold leading-[1.02] tracking-[-0.03em] mb-6 max-w-5xl mx-auto"
+            >
+              Websites built
+              <br />
+              <span className="whitespace-nowrap">for the <span className="serif-accent text-brand-orange">trades</span>.</span>
+              <br />
+              <span className="text-brand-slate">Booked jobs, not busywork.</span>
+            </motion.h1>
 
-              <motion.h1 variants={fadeInUp} className="text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight mb-4">
-                Websites built for the trades.{' '}
-                <span className="text-brand-orange">AI tools to back them up.</span>
-              </motion.h1>
+            <motion.p variants={fadeInUp} className="text-base lg:text-lg text-brand-slate mb-8 leading-relaxed max-w-2xl mx-auto">
+              Ranked on Google. Built to turn visits into calls.
+              <br />
+              Delivered fully async — no meetings, no time off the tools.
+            </motion.p>
 
-              <motion.p variants={fadeInUp} className="text-base text-brand-slate mb-6 leading-relaxed max-w-[55ch]">
-                We build high-converting sites for tradespeople — researched against your competitors, optimised for local search, and delivered fully async. No calls required.
-              </motion.p>
-
-              <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-                <a href="#portfolio" className="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-[#e66000] transition-colors shadow-xl shadow-brand-orange/20 flex items-center justify-center gap-2">
-                  See Our Work <ArrowRight className="w-5 h-5" />
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Magnetic strength={0.12}>
+                <a href="#start-build" className="bg-brand-orange text-white px-10 py-5 rounded-2xl font-bold text-base hover:bg-[#e66000] transition-colors shadow-xl shadow-brand-orange/25 inline-flex items-center justify-center gap-2">
+                  Start Your Build <ArrowRight className="w-5 h-5" />
                 </a>
-                <a href="#pricing" className="bg-white text-brand-dark border-2 border-gray-200 px-8 py-4 rounded-xl font-bold text-base hover:border-brand-dark transition-colors flex items-center justify-center gap-2">
+              </Magnetic>
+              <Magnetic strength={0.08}>
+                <a href="#pricing" className="bg-white text-brand-dark border border-gray-200 px-10 py-5 rounded-2xl font-bold text-base hover:border-brand-dark transition-colors inline-flex items-center justify-center gap-2 shadow-sm">
                   View Pricing
                 </a>
-              </motion.div>
-
-              <motion.div variants={fadeInUp} className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-brand-slate font-medium">
-                {['Trades only', 'You own the site', 'Fully async', 'AI-powered'].map(t => (
-                  <span key={t} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-brand-orange" />
-                    {t}
-                  </span>
-                ))}
-              </motion.div>
+              </Magnetic>
             </motion.div>
 
-            {/* Hero image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative lg:ml-auto"
-            >
-              <img
-                src="/agencyheroimage.svg"
-                alt="Website design showcase"
-                className="w-full h-auto block"
-                loading="eager"
-              />
+            <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[15px] text-brand-dark font-semibold justify-center">
+              {['Trades only', 'You own the site', 'Fully async', 'AI-powered'].map(t => (
+                <span key={t} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-[18px] h-[18px] text-brand-orange" />
+                  {t}
+                </span>
+              ))}
             </motion.div>
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Numbers strip */}
+      <section className="border-y border-gray-200 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { n: 5, suffix: '', label: 'Day delivery' },
+            { n: 100, suffix: '%', label: 'Bespoke builds' },
+            { n: 3, suffix: '', label: 'Sites live' },
+            { n: 0, suffix: '', label: 'Sales calls' },
+          ].map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.08} className="text-center">
+              <div className="text-5xl lg:text-6xl font-bold tracking-tight">
+                <CountUp end={s.n} suffix={s.suffix} />
+              </div>
+              <div className="text-sm text-brand-slate mt-2 font-medium uppercase tracking-wider">{s.label}</div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-24 bg-white">
+      <section id="how-it-works" className="py-32 lg:py-40 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold mb-4">How it works</h2>
-            <p className="text-lg text-brand-slate">The whole process runs by message. No calls, no meetings, no waiting around.</p>
-          </div>
+          <Reveal className="max-w-3xl mb-20">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-5 tracking-[-0.025em]">
+              How it <span className="serif-accent text-brand-orange">works</span>
+            </h2>
+            <p className="text-xl text-brand-slate leading-relaxed">The whole process runs by message. No calls, no meetings, no waiting around.</p>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -253,19 +268,21 @@ export default function App() {
       </section>
 
       {/* Portfolio */}
-      <section id="portfolio" className="py-24 bg-brand-light border-y border-gray-200">
+      <section id="portfolio" className="py-32 lg:py-40 bg-brand-light border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold mb-4">Our work</h2>
-            <p className="text-lg text-brand-slate">Every site is built from scratch — researched, designed, and optimised for local search.</p>
-          </div>
+          <Reveal className="max-w-3xl mb-20">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-5 tracking-[-0.025em]">
+              Our <span className="serif-accent text-brand-orange">work</span>
+            </h2>
+            <p className="text-xl text-brand-slate leading-relaxed">Every site is built from scratch — researched, designed, and optimised for local search.</p>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {portfolio.map(p => (
-              <motion.div
-                key={p.name}
-                whileHover={{ y: -4 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col"
+            {portfolio.map((p, i) => (
+              <Reveal key={p.name} delay={i * 0.08}>
+              <TiltCard
+                max={4}
+                className="bg-white rounded-3xl overflow-hidden shadow-xl shadow-brand-dark/5 border border-gray-100 flex flex-col h-full hover:shadow-2xl hover:shadow-brand-dark/10 transition-shadow duration-500"
               >
                 {/* Browser chrome mockup */}
                 <div className="bg-gray-100 border-b border-gray-200">
@@ -281,7 +298,7 @@ export default function App() {
                     </div>
                   </div>
                   {/* Screenshot */}
-                  <div className="overflow-hidden relative" style={{ height: '260px' }}>
+                  <div className="overflow-hidden relative" style={{ height: '360px' }}>
                     {p.preview ? (
                       <img
                         src={p.preview}
@@ -298,21 +315,21 @@ export default function App() {
                   </div>
                 </div>
                 {/* Card body */}
-                <div className="p-6 flex flex-col flex-1">
+                <div className="p-8 flex flex-col flex-1">
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div>
-                      <h3 className="font-bold text-lg leading-tight">{p.name}</h3>
-                      <p className="text-sm text-brand-slate mt-0.5">{p.trade} · {p.location}</p>
+                      <h3 className="font-bold text-xl leading-tight">{p.name}</h3>
+                      <p className="text-sm text-brand-slate mt-1">{p.trade} · {p.location}</p>
                     </div>
                     <span className="shrink-0 text-xs font-bold bg-brand-orange/10 text-brand-orange px-3 py-1 rounded-full border border-brand-orange/20">{p.package}</span>
                   </div>
-                  <p className="text-sm text-brand-slate leading-relaxed mb-5 flex-1">{p.description}</p>
+                  <p className="text-base text-brand-slate leading-relaxed mb-6 flex-1">{p.description}</p>
                   {p.url ? (
                     <a
                       href={p.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange hover:underline"
+                      className="inline-flex items-center gap-2 text-sm font-bold text-brand-orange link-underline self-start"
                     >
                       View live site <ExternalLink className="w-4 h-4" />
                     </a>
@@ -322,92 +339,44 @@ export default function App() {
                     </span>
                   )}
                 </div>
-              </motion.div>
+              </TiltCard>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services */}
-      <section id="services" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold mb-4">What we offer</h2>
-            <p className="text-lg text-brand-slate">Start with a site that converts. Add AI tools when you're ready.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Website Build */}
-            <div className="bg-brand-dark text-white rounded-3xl p-8">
-              <div className="w-11 h-11 bg-brand-orange rounded-xl flex items-center justify-center mb-6">
-                <Globe className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">Website Build</h3>
-              <p className="text-gray-300 leading-relaxed mb-6 text-sm">
-                A high-converting, mobile-first website optimised for local search. Built from competitor research, not templates.
-              </p>
-              <ul className="space-y-2.5 text-sm text-gray-300">
-                {['Local SEO on every page', 'Schema.org structured data', 'Google review integration', 'Contact form lead capture', 'Delivered in 5–7 days'].map(f => (
-                  <li key={f} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-brand-orange shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="#pricing" className="mt-8 block text-center bg-brand-orange text-white font-bold py-3.5 rounded-xl hover:bg-[#e66000] transition-colors text-sm">
-                See Pricing
-              </a>
-            </div>
-
-            {/* AI Receptionist */}
-            <div className="bg-gray-50 rounded-3xl p-8 border border-gray-200 relative overflow-hidden">
-              <div className="absolute top-4 right-4 text-xs font-bold bg-brand-dark text-white px-3 py-1 rounded-full">Coming Soon</div>
-              <div className="w-11 h-11 bg-brand-orange/10 border border-brand-orange/20 rounded-xl flex items-center justify-center mb-6">
-                <Mic className="w-6 h-6 text-brand-orange" />
-              </div>
-              <h3 className="text-2xl font-bold mb-3">AI Receptionist</h3>
-              <p className="text-brand-slate leading-relaxed mb-6 text-sm">
-                An AI voice agent that answers your calls 24/7, qualifies leads, and books jobs directly into your calendar — while you're on the tools.
-              </p>
-              <ul className="space-y-2.5 text-sm text-brand-slate">
-                {['Answers within 2 seconds', 'Sounds like a real person', 'Qualifies leads to your criteria', 'Books directly into your calendar', '0 missed calls'].map(f => (
-                  <li key={f} className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-brand-orange shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <button className="mt-8 w-full text-center bg-brand-dark text-white font-bold py-3.5 rounded-xl hover:bg-gray-800 transition-colors text-sm">
-                Join the Waitlist
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing */}
-      <section id="pricing" className="py-24 bg-brand-light border-y border-gray-200">
+      <section id="pricing" className="py-32 lg:py-40 bg-brand-light border-y border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold mb-4">Pricing</h2>
-            <p className="text-lg text-brand-slate">One-off builds. You own the site outright — no monthly subscription to escape from.</p>
-          </div>
+          <Reveal className="max-w-3xl mb-20">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-5 tracking-[-0.025em]">
+              Simple <span className="serif-accent text-brand-orange">pricing</span>
+            </h2>
+            <p className="text-xl text-brand-slate leading-relaxed">
+              One-off builds. You own the site outright.
+              <br />
+              Care Plan is optional — cancel any time, no lock-in.
+            </p>
+          </Reveal>
 
           <div className="grid lg:grid-cols-2 gap-6 mb-10">
-            {/* Local */}
+            {/* Starter */}
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col">
-              <h3 className="text-xl font-bold mb-1">Local</h3>
-              <div className="text-4xl font-display font-bold mb-1">£447</div>
+              <h3 className="text-xl font-bold mb-1">Starter</h3>
+              <div className="text-4xl font-display font-bold mb-1">£497</div>
               <p className="text-sm text-brand-slate mb-6">A sharp, bespoke site built to rank in your town and turn visitors into calls. Live in 5–7 days.</p>
               <ul className="space-y-3 mb-8 flex-1 text-sm">
                 {[
                   'Bespoke design — no templates',
-                  'Ranks for your trade + your town',
-                  'Click-to-call + contact form',
+                  'Ranks for your trade in your town',
+                  'Up to 5 pages (home, services, about, areas, contact)',
+                  'Click-to-call, WhatsApp + contact form',
+                  'Professional trade photography throughout',
                   'Conversion copy written for you',
-                  'Schema markup included',
-                  '2 rounds of revisions',
-                  '5–7 day delivery',
+                  'Simple logo included (if you don\'t have one)',
+                  '1 round of revisions',
+                  'Live in 5 days',
                 ].map(f => (
                   <li key={f} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
@@ -415,25 +384,39 @@ export default function App() {
                   </li>
                 ))}
               </ul>
+              <div className="mb-4 p-3 rounded-xl bg-brand-light border border-dashed border-gray-300 text-xs">
+                <span className="font-bold text-brand-dark">+ Care Plan £65/mo</span>
+                <span className="text-brand-slate"> (recommended)</span>
+                <div className="text-brand-slate mt-0.5">Hosting, unlimited edits & priority support.</div>
+              </div>
               <a href="#start-build" className="block text-center bg-gray-100 text-brand-dark font-bold py-3.5 rounded-xl hover:bg-gray-200 transition-colors text-sm">
                 Get Started
               </a>
             </div>
 
-            {/* Dominate */}
+            {/* Pro */}
             <div className="bg-brand-dark text-white rounded-3xl p-8 shadow-xl relative overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 bg-brand-orange text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">Most Popular</div>
-              <h3 className="text-xl font-bold mb-1">Dominate</h3>
+              <h3 className="text-xl font-bold mb-1">Pro</h3>
               <div className="text-4xl font-display font-bold mb-1">£797</div>
               <p className="text-sm text-gray-300 mb-6">Built to own every search term across every town you cover. The last website you'll ever need.</p>
               <ul className="space-y-3 mb-8 flex-1 text-sm text-gray-200">
                 {[
-                  'Everything in Local',
-                  'Ranks across multiple towns',
-                  'Competitor research included',
-                  'Dedicated page per service',
-                  'Google review integration',
-                  '3 rounds of revisions',
+                  'Everything in Starter',
+                  'A dedicated page for every service you offer (6–10 pages)',
+                  'A dedicated page for every town you cover',
+                  'Interactive service area map',
+                  'Google Business Profile starter kit — we write it, you paste it in',
+                  'Print-ready review card — customers scan, leave a Google review in 10 seconds',
+                  'Branded email signature',
+                  'Branded invoice PDF template',
+                  '10 ready-to-post social media posts',
+                  'Recent Jobs page (if you have photos)',
+                  'Guaranteed to load fast on mobile',
+                  'First month of AI Receptionist free (launching soon)',
+                  'First month of Care Plan free',
+                  '2 rounds of revisions',
+                  'Live in 7 days',
                 ].map(f => (
                   <li key={f} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-brand-orange shrink-0 mt-0.5" />
@@ -441,6 +424,11 @@ export default function App() {
                   </li>
                 ))}
               </ul>
+              <div className="mb-4 p-3 rounded-xl bg-white/5 border border-dashed border-white/20 text-xs">
+                <span className="font-bold text-white">+ Care Plan £65/mo</span>
+                <span className="text-gray-400"> (first month free, recommended)</span>
+                <div className="text-gray-400 mt-0.5">Hosting, unlimited edits & priority support.</div>
+              </div>
               <a href="#start-build" className="block text-center bg-brand-orange text-white font-bold py-3.5 rounded-xl hover:bg-[#e66000] transition-colors shadow-lg shadow-brand-orange/20 text-sm">
                 Get Started
               </a>
@@ -452,9 +440,9 @@ export default function App() {
             <h4 className="font-bold mb-4 text-sm uppercase tracking-wider text-brand-slate">Add-ons</h4>
             <div className="space-y-3">
               {[
-                { label: 'Rush Delivery', desc: '24–48hr turnaround', price: '+£100' },
-                { label: 'Logo Refresh', desc: 'Modernise your brand mark', price: '+£75' },
-                { label: 'Monthly Maintenance', desc: 'Hosting, security, edits & monthly SEO report', price: '£65/mo' },
+                { label: 'AI Receptionist', desc: '24/7 call answering, books jobs, and auto-sends review requests after every job. Launching soon — Pro customers get their first month free at launch', price: '£97/mo' },
+                { label: 'Rush Delivery', desc: '24–48hr turnaround. One rush slot per week, subject to availability.', price: '+£197' },
+                { label: 'Care Plan', desc: 'Hosting, SSL & backups · Unlimited small edits · Monthly performance report · Same-day priority support', price: '£65/mo' },
               ].map(a => (
                 <div key={a.label} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
                   <div>
@@ -470,12 +458,14 @@ export default function App() {
       </section>
 
       {/* Testimonials */}
-      <section id="results" className="py-24 bg-brand-dark text-white">
+      <section id="results" className="py-32 lg:py-40 bg-brand-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl font-bold mb-4">Results</h2>
-            <p className="text-lg text-gray-300">What trades businesses say after going live.</p>
-          </div>
+          <Reveal className="max-w-3xl mb-20">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-5 tracking-[-0.025em]">
+              Real <span className="serif-accent text-brand-orange">results</span>
+            </h2>
+            <p className="text-xl text-gray-300 leading-relaxed">What trades businesses say after going live.</p>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -505,13 +495,44 @@ export default function App() {
         </div>
       </section>
 
+      {/* AI Receptionist teaser */}
+      <section className="py-20 lg:py-24 bg-brand-dark text-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-bold uppercase tracking-wider mb-4">
+                  <Mic className="w-3.5 h-3.5 text-brand-orange" />
+                  Coming Soon
+                </div>
+                <h3 className="text-3xl lg:text-4xl font-bold tracking-[-0.02em] mb-3">
+                  AI Receptionist — never miss a job again.
+                </h3>
+                <p className="text-gray-300 leading-relaxed max-w-xl">
+                  Answers your calls 24/7, qualifies leads, books jobs into your calendar, and sends review requests after every job. Pro customers get their first month free at launch.
+                </p>
+              </div>
+              <a href="#start-build" className="shrink-0 inline-flex items-center justify-center gap-2 bg-brand-orange text-white font-bold px-7 py-4 rounded-2xl hover:bg-[#e66000] transition-colors shadow-lg shadow-brand-orange/20">
+                Join the Waitlist <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Get Started Form */}
-      <section id="start-build" className="py-24 bg-white">
+      <section id="start-build" className="py-32 lg:py-40 bg-white">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-10">
-            <h2 className="text-4xl font-bold mb-3">Start your build</h2>
-            <p className="text-brand-slate">Pick your package, tell us about your business, and we'll get to work. No calls, no back-and-forth.</p>
-          </div>
+          <Reveal className="mb-14">
+            <h2 className="text-5xl lg:text-6xl font-bold mb-4 tracking-[-0.025em]">
+              Start your <span className="serif-accent text-brand-orange">build</span>
+            </h2>
+            <p className="text-lg text-brand-slate">
+              Pick your package, tell us about your business, and we'll get to work.
+              <br />
+              No calls, no back-and-forth.
+            </p>
+          </Reveal>
 
           {submitted ? (
             <motion.div
@@ -585,8 +606,8 @@ export default function App() {
                   className="w-full p-3.5 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition-all appearance-none text-sm"
                 >
                   <option value="">Select a package...</option>
-                  <option>Local — £447</option>
-                  <option>Dominate — £797</option>
+                  <option>Starter — £497</option>
+                  <option>Pro — £797</option>
                   <option>Not sure yet</option>
                 </select>
               </div>

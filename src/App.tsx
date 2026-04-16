@@ -75,9 +75,9 @@ export default function App() {
       name: 'GLJ Plumbing',
       trade: 'Plumber & Bathroom Specialist',
       location: 'Llanelli, South Wales',
-      tier: 'Starter',
+      tier: 'Pro',
       url: 'https://glj-plumbing-portfolio.netlify.app/',
-      description: 'Family-run plumbers established 1993. Bathroom installations, kitchen plumbing and repairs across Carmarthenshire. Real Yell reviews, local schema, mobile-first call CTAs.',
+      description: 'Family-run plumbers established 1993. Five-page build with dedicated Services, About and Areas pages, real Yell reviews, Plumber-specific schema, and a mobile-first sticky call bar.',
       previewDesktop: '/glj-preview-desktop.png',
       previewMobile: '/glj-preview-mobile.png',
     },
@@ -372,12 +372,13 @@ export default function App() {
             <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 flex flex-col">
               <h3 className="text-xl font-bold mb-1">Starter</h3>
               <div className="text-4xl font-display font-bold mb-1">£497</div>
-              <p className="text-sm text-brand-slate mb-6">A sharp, bespoke site built to rank in your town and turn visitors into calls. Live in 5–7 days.</p>
+              <p className="text-sm text-brand-slate mb-6">One sharp single-page site, built to rank in your home town and turn visitors into calls. Live in 5 days.</p>
               <ul className="space-y-3 mb-8 flex-1 text-sm">
                 {[
                   'Bespoke design — no templates',
-                  'Ranks for your trade in your town',
-                  'Up to 5 pages (home, services, about, areas, contact)',
+                  'Ranks for your trade in your home town',
+                  'Single-page site (everything on one scrolling home)',
+                  'All your services on one section',
                   'Click-to-call, WhatsApp + contact form',
                   'Professional trade photography throughout',
                   'Conversion copy written for you',

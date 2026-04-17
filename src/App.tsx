@@ -90,7 +90,7 @@ export default function App() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center">
-            <img src="/Logo (black).svg" alt="Tradies Toolbox" className="h-9 w-auto" />
+            <img src="/Logo (black).svg" alt="Tradies Toolbox" className="h-8 w-auto" />
           </div>
 
           <div className="hidden md:flex items-center gap-8 font-medium text-sm">

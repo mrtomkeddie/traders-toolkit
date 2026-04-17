@@ -82,6 +82,16 @@ export default function App() {
       previewMobile: '/glj-preview-mobile.png',
     },
     {
+      name: 'Andy John Plumbing',
+      trade: 'Plumber, Heating & Gas Engineer',
+      location: 'Swansea, South Wales',
+      tier: 'Pro',
+      url: 'https://andy-john-plumbing.netlify.app/',
+      description: 'Five-page build for Swansea\'s highest-rated plumber. 64 five-star Google reviews front and centre, lettings agency trust section, 7 service categories with imagery, Gas Safe & TrustMark credentials, and 24/7 emergency messaging.',
+      previewDesktop: '/andy-john-preview-desktop.png',
+      previewMobile: '/andy-john-preview-mobile.png',
+    },
+    {
       name: 'Paragon Plumbing',
       trade: 'Gas Safe Plumber & Heating Engineer',
       location: 'Swansea & Pontardawe',

@@ -81,6 +81,16 @@ export default function App() {
       previewDesktop: '/glj-preview-desktop.png',
       previewMobile: '/glj-preview-mobile.png',
     },
+    {
+      name: 'Paragon Plumbing',
+      trade: 'Gas Safe Plumber & Heating Engineer',
+      location: 'Swansea & Pontardawe',
+      tier: 'Starter',
+      url: 'https://paragon-plumbing-portfolio.netlify.app/',
+      description: 'One-page build for a Gas Safe engineer. Same-day callout messaging, 39 verified Yell reviews at 5.0★, accordion services section, and Plumber schema with aggregateRating.',
+      previewDesktop: '/paragon-preview-desktop.png',
+      previewMobile: '/paragon-preview-mobile.png',
+    },
   ];
 
   return (

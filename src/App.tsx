@@ -280,13 +280,13 @@ export default function App() {
             <p className="text-xl text-brand-slate leading-relaxed">Every site is built from scratch — researched, designed, and optimised for local search.</p>
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="flex gap-8 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-thin -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
             {portfolio.map((p, i) => {
               const tierClass = p.tier === 'Pro'
                 ? 'bg-brand-dark text-white border-brand-dark'
                 : 'bg-brand-orange/10 text-brand-orange border-brand-orange/20';
               return (
-              <Reveal key={p.name} delay={i * 0.08}>
+              <Reveal key={p.name} delay={i * 0.08} className="shrink-0 w-[85vw] sm:w-[70vw] lg:w-[560px] snap-start">
                 <article className="bg-white rounded-3xl overflow-hidden shadow-xl shadow-brand-dark/5 border border-gray-100 flex flex-col h-full">
                   {/* Desktop preview with browser chrome */}
                   <div className="bg-gray-100 border-b border-gray-200">

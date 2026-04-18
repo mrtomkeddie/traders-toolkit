@@ -15,6 +15,7 @@ import {
   Clock,
   Mic,
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Magnetic, Reveal, CountUp, TiltCard } from './animations';
 
 export default function App() {
@@ -663,7 +664,7 @@ export default function App() {
               {submitError && (
                 <p className="text-sm text-center text-red-600 bg-red-50 rounded-lg py-2 px-3">{submitError}</p>
               )}
-              <p className="text-xs text-center text-brand-slate">We'll be in touch within 1 working day to get started. No calls, no spam.</p>
+              <p className="text-xs text-center text-brand-slate">We'll be in touch within 1 working day to get started. No calls, no spam. <Link to="/privacy" className="underline hover:text-brand-dark">Privacy policy</Link>.</p>
             </form>
           )}
         </div>
@@ -679,6 +680,7 @@ export default function App() {
             <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
             <a href="#portfolio" className="hover:text-white transition-colors">Our Work</a>
             <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
           </div>
           <p className="text-xs">© 2026 Tradies Toolbox. tradiestoolbox.co.uk</p>
         </div>

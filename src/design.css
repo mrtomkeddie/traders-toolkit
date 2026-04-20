@@ -2058,3 +2058,32 @@ footer {
   stroke-linejoin: round;
   transition: opacity 0.15s;
 }
+
+/* Theme toggle — override Tailwind preflight */
+button.theme-toggle {
+  display: grid !important;
+  place-items: center;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--line-strong) !important;
+  background: transparent !important;
+  color: var(--fg) !important;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0 !important;
+  appearance: none;
+}
+button.theme-toggle:hover {
+  background: var(--line) !important;
+}
+button.theme-toggle svg {
+  width: 16px !important;
+  height: 16px !important;
+  stroke: currentColor;
+  fill: none !important;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}

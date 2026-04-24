@@ -519,7 +519,7 @@ export default function App() {
             <div className="addons">
               <div className="addons-label">Add-ons</div>
               <div className="addon-row">
-                <div className="addon-name">AI Receptionist <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', background: 'var(--border)', color: 'var(--muted)', borderRadius: 4, padding: '2px 6px', verticalAlign: 'middle', marginLeft: 6 }}>Coming soon</span></div>
+                <div className="addon-name" style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>AI Receptionist <span style={{ fontSize: 10, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', background: 'var(--border)', color: 'var(--muted)', borderRadius: 4, padding: '2px 6px', alignSelf: 'flex-start' }}>Coming soon</span></div>
                 <div className="addon-desc">24/7 call answering, books jobs, and auto-sends review requests after every job. Pro customers get their first month free at launch.</div>
                 <div className="addon-price" style={{ opacity: 0.5 }}>£97/mo</div>
               </div>

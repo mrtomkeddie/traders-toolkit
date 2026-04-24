@@ -298,7 +298,7 @@ export default function App() {
               </div>
               <div className="ticker-bottom">
                 <p className="hero-sub">
-                  Every trade gets its own tuned site — same toolbox, different tools. Built in the UK, made to book jobs.
+                  Every trade gets its own tuned site — same toolbox, different tools.<br />Built in the UK, made to book jobs.
                 </p>
                 <div className="hero-meta">
                   <div><span className="num">5-7d</span><span className="lbl">Go live</span></div>
